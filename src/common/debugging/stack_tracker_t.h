@@ -28,8 +28,8 @@
 // another push/pop to happen, causing this to assert again, ad infinitum.
 #include <cassert>
 #include <thread>
-#include "../../geco-engine-config.h"
-#include "../../plateform.h"
+#include "../geco-engine-feature.h"
+#include "../geco-plateform.h"
 
 namespace geco
 {
@@ -80,15 +80,8 @@ namespace geco
         struct scoped_stack_tracker_t
         {
             scoped_stack_tracker_t(const char* name, const char* file = NULL,
-                uint line = 0)
-            {
-                stack_tracker_t::push(name, file, line);
-            }
-
-            ~scoped_stack_tracker_t()
-            {
-                stack_tracker_t::pop();
-            }
+                uint line = 0);
+            ~scoped_stack_tracker_t();
         };
 #endif
     }
